@@ -53,18 +53,6 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    /* Input Field */
-    input {
-      padding: 12px;
-      border: 2px solid #38a3a5;
-      border-radius: 8px;
-      margin: 15px 0;
-      font-size: 1rem;
-      width: 80%;
-      max-width: 300px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
     /* Buttons */
     button {
       padding: 12px 24px;
@@ -88,14 +76,6 @@
       cursor: not-allowed;
     }
 
-    /* Error Message */
-    .error {
-      color: #d72638;
-      font-weight: bold;
-      margin-top: 10px;
-      display: none;
-    }
-
     /* Gift Message */
     .gift-message {
       margin-top: 20px;
@@ -114,6 +94,13 @@
     .gift-message button:hover {
       background-color: #d65a00;
     }
+
+    /* Wishes Section */
+    .wishes {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #3a3a3a;
+    }
   </style>
 </head>
 
@@ -122,21 +109,18 @@
     <header class="App-header">
       <h1>🎄 Merry Christmas! 🎁</h1>
       <p>Welcome to this festive website!</p>
-      <h2>Can you guess my name? 🤔</h2>
-      <p>Here's a riddle:</p>
+      <p class="wishes">May your holidays be filled with joy, warmth, and cherished moments! 🎅✨</p>
       <blockquote>
-        I chart the world, but not with pen,<br />
-        Between two who mirror each other, I’ve always been.<br />
-        Glasses on, I navigate the code,<br />
-        Building the future from a quiet abode.<br />
-        My name stays secret, my work unseen,<br />
-        Can you guess who I might have been?
+        "Christmas isn’t a season. It’s a feeling." – Edna Ferber
       </blockquote>
-      <form id="guessForm">
-        <input type="text" id="answer" placeholder="Your guess..." />
-        <button type="submit">Submit</button>
-      </form>
-      <p id="errorMessage" class="error">Sorry, no more attempts left. 🎄 Better luck next time!</p>
+      <blockquote>
+        I shape the world with maps unseen,<br />
+Through lenses clear, I glean the scene.<br />
+Two mirrored stars flank where I dwell,<br />
+A name concealed, I never tell.<br />
+Can you unveil the mystery well?
+      </blockquote>
+      
 
       <div class="gift-message">
         <p>Here's your Christmas gift! 🎁</p>
@@ -146,29 +130,6 @@
   </div>
 
   <script>
-    const correctAnswer = "kruti";
-    let attempts = 0;
-
-    document.getElementById("guessForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const answerInput = document.getElementById("answer");
-      const answer = answerInput.value.trim();
-      const errorMessage = document.getElementById("errorMessage");
-
-      attempts++;
-
-      if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
-        alert("Correct! 🎉 Merry Christmas!");
-        answerInput.disabled = true;
-      } else if (attempts < 3) {
-        alert(`Try Again! 🎅 You have ${3 - attempts} attempt(s) left.`);
-      } else {
-        errorMessage.style.display = "block";
-        answerInput.disabled = true;
-      }
-    });
-
     document.getElementById("giftButton").addEventListener("click", () => {
       window.open(
         "https://www.amazon.in/g/DS4B5464OKBT5T1I?ref=gc_utyp&templateId=a_for_amazon_default_child_noto_email_in-main",
