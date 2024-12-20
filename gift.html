@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merry Christmas</title>
+  <style>
+    /* General App Styles */
+    .App {
+      text-align: center;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      height: 100vh;
+      color: #1b262c;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .App-header {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    /* Header and Text */
+    h1 {
+      color: #d72638;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      color: #3d3d3d;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    /* Blockquote for Riddle */
+    blockquote {
+      font-style: italic;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px 20px;
+      border-left: 5px solid #f77f00;
+      border-radius: 5px;
+      color: #1b262c;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Input Field */
+    input {
+      padding: 12px;
+      border: 2px solid #38a3a5;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-size: 1rem;
+      width: 80%;
+      max-width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Buttons */
+    button {
+      padding: 12px 24px;
+      background-color: #38a3a5;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #22577a;
+      transform: translateY(-3px);
+    }
+
+    button:disabled {
+      background-color: #d3d3d3;
+      cursor: not-allowed;
+    }
+
+    /* Error Message */
+    .error {
+      color: #d72638;
+      font-weight: bold;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Gift Message */
+    .gift-message {
+      margin-top: 20px;
+    }
+
+    .gift-message p {
+      font-size: 1.2rem;
+      color: #3a3a3a;
+    }
+
+    .gift-message button {
+      background-color: #f77f00;
+      color: white;
+    }
+
+    .gift-message button:hover {
+      background-color: #d65a00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="App">
+    <header class="App-header">
+      <h1>🎄 Merry Christmas! 🎁</h1>
+      <p>Welcome to this festive website!</p>
+      <h2>Can you guess my name? 🤔</h2>
+      <p>Here's a riddle:</p>
+      <blockquote>
+        I chart the world, but not with pen,<br />
+        Between two who mirror each other, I’ve always been.<br />
+        Glasses on, I navigate the code,<br />
+        Building the future from a quiet abode.<br />
+        My name stays secret, my work unseen,<br />
+        Can you guess who I might have been?
+      </blockquote>
+      <form id="guessForm">
+        <input type="text" id="answer" placeholder="Your guess..." />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="errorMessage" class="error">Sorry, no more attempts left. 🎄 Better luck next time!</p>
+
+      <div class="gift-message">
+        <p>Here's your Christmas gift! 🎁</p>
+        <button id="giftButton">Click to Redeem Your Gift Card</button>
+      </div>
+    </header>
+  </div>
+
+  <script>
+    const correctAnswer = "kruti";
+    let attempts = 0;
+
+    document.getElementById("guessForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const answerInput = document.getElementById("answer");
+      const answer = answerInput.value.trim();
+      const errorMessage = document.getElementById("errorMessage");
+
+      attempts++;
+
+      if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
+        alert("Correct! 🎉 Merry Christmas!");
+        answerInput.disabled = true;
+      } else if (attempts < 3) {
+        alert(`Try Again! 🎅 You have ${3 - attempts} attempt(s) left.`);
+      } else {
+        errorMessage.style.display = "block";
+        answerInput.disabled = true;
+      }
+    });
+
+    document.getElementById("giftButton").addEventListener("click", () => {
+      window.open(
+        "https://www.amazon.in/g/DS4B5464OKBT5T1I?ref=gc_utyp&templateId=a_for_amazon_default_child_noto_email_in-main",
+        "_blank"
+      );
+    });
+  </script>
+</body>
+
+</html>
